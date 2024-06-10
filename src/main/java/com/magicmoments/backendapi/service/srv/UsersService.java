@@ -1,5 +1,6 @@
 package com.magicmoments.backendapi.service.srv;
 
+import com.magicmoments.backendapi.model.Users;
 import com.magicmoments.backendapi.service.dto.UsersDto;
 import com.magicmoments.backendapi.service.mappers.UsersMapper;
 import com.magicmoments.backendapi.service.repositories.UsersRepository;
@@ -15,7 +16,10 @@ public class UsersService {
     UsersMapper usersMapper;
 
     public UsersDto saveUser(UsersDto usersDto) {
-        usersRepository.save(usersMapper.toEntity(usersDto));
+        Users user = usersRepository.save(usersMapper.toEntity(usersDto));
+
+        usersDto.setId(user.getId());
+
         return usersDto;
     }
 }

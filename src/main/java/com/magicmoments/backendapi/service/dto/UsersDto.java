@@ -10,4 +10,8 @@ public class UsersDto {
     private String surname;
     private String username;
     private String password;
+
+    // form inputs
+    private String confirmPassword;
+    private String tokenJWT;
 }
