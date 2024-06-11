@@ -31,5 +31,4 @@ public class EmailService {
 
         mailSender.send(mimeMessage);
     }
-
 }

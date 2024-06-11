@@ -1,7 +1,6 @@
 package com.magicmoments.backendapi.controllers;
 
 import com.magicmoments.backendapi.model.Colors;
-import com.magicmoments.backendapi.model.Items;
 import com.magicmoments.backendapi.service.dto.ItemsDto;
 import com.magicmoments.backendapi.service.srv.ItemsService;
 import io.swagger.v3.oas.annotations.Operation;
