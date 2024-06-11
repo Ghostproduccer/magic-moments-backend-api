@@ -1,6 +1,10 @@
 package com.magicmoments.backendapi.service.dto;
 
+import com.magicmoments.backendapi.model.Roles;
 import lombok.Data;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 public class UsersDto {
@@ -10,6 +14,8 @@ public class UsersDto {
     private String surname;
     private String username;
     private String password;
+
+    private Set<Roles> roles = new HashSet<>();
 
     // form inputs
     private String confirmPassword;

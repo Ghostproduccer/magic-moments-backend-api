@@ -15,7 +15,7 @@ public class UsersService {
     @Autowired
     UsersMapper usersMapper;
 
-    public UsersDto saveUser(UsersDto usersDto) {
+    public UsersDto registerNewUser(UsersDto usersDto) {
         Users user = usersRepository.save(usersMapper.toEntity(usersDto));
 
         usersDto.setId(user.getId());
