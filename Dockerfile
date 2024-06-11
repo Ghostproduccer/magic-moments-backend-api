@@ -10,7 +10,7 @@ RUN mvn -f /home/app/pom.xml clean package
 # Run stage
 #
 FROM openjdk:17
-COPY --from=build /home/app/target/magic-moments-backend-api-0.0.1-SNAPSHOT.jar /usr/local/lib/magic-moments-backend-api-0.0.1-SNAPSHOT.jar
+COPY --from=build /home/app/target/magic-moments-backend-api-0.0.1-SNAPSHOT.jar /target/magic-moments-backend-api-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
 USER 10014
-ENTRYPOINT ["java","-jar","/usr/local/lib/magic-moments-backend-api-0.0.1.jar"]
+ENTRYPOINT ["java","-jar","/target/magic-moments-backend-api-0.0.1.jar"]
