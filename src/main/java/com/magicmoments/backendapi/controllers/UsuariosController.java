@@ -27,7 +27,8 @@ public class UsuariosController {
         binder.addValidators(usuarioValidator);
     }
 
-    @PostMapping("/registerUser")
+
+    @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody RegisterForm registerForm, BindingResult result) {
         UsersDto usersDto = new UsersDto();
 
@@ -39,6 +40,6 @@ public class UsuariosController {
 
         UsersDto savedUser = usersService.registerNewUser(usersDto);
 
-        return ResponseEntity.ok(savedUser);
+        return ResponseEntity.ok().body(savedUser);
     }
 }
