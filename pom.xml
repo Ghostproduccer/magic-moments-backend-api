@@ -9,10 +9,10 @@
         <relativePath/>
     </parent>
     <groupId>com.magicmoments</groupId>
-    <artifactId>magic-moments-backend-api</artifactId>
+    <artifactId>backend-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>magic-moments-backend-api</name>
-    <description>magic-moments-backend-api</description>
+    <description>backend-api</description>
     <properties>
         <java.version>19</java.version>
     </properties>
@@ -68,6 +68,32 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
     </dependencies>
 
     <repositories>
