@@ -31,11 +31,15 @@ public class ItemsService {
 
     public ItemsDto getItemsWithColorById(int itemId) {
         Items item = itemsRepo.findById(itemId);
-        List<ItemsColors> itemsColorsList = itemsColorsRepo.findByItemId(itemId);
-
         ItemsDto dto = itemsMapper.toDto(item);
-        List<ItemsColorsDto> itemsColorsDtoList = itemsColorMapper.toDtoList(itemsColorsList);
-        dto.setItem_color(itemsColorsDtoList);
+        if (dto != null) {
+            List<ItemsColors> itemsColorsList = itemsColorsRepo.findByItemId(itemId);
+
+            if (itemsColorsList != null) {
+                List<ItemsColorsDto> itemsColorsDtoList = itemsColorMapper.toDtoList(itemsColorsList);
+                dto.setItem_color(itemsColorsDtoList);
+            }
+        }
 
         return dto;
     }
