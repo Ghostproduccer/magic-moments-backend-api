@@ -29,8 +29,15 @@ public class ItemsService {
     @Autowired
     ItemsColorsMapper itemsColorMapper;
 
-    public List<ItemsColors> getItemColorsByItemId(int itemId) {
-        return itemsColorsRepo.findByItemId(itemId);
+    public ItemsDto getItemsWithColorById(int itemId) {
+        Items item = itemsRepo.findById(itemId);
+        List<ItemsColors> itemsColorsList = itemsColorsRepo.findByItemId(itemId);
+
+        ItemsDto dto = itemsMapper.toDto(item);
+        List<ItemsColorsDto> itemsColorsDtoList = itemsColorMapper.toDtoList(itemsColorsList);
+        dto.setItem_color(itemsColorsDtoList);
+
+        return dto;
     }
 
     /**
@@ -46,8 +53,6 @@ public class ItemsService {
 
         for (ItemsDto itemDto : itemsDtosList) {
             List<ItemsColors> itemsColorsList = itemsColorsRepo.findByItemId(itemDto.getId());
-            System.out.println(itemsColorsList.get(0).getColor());
-            System.out.println(itemsColorsList.get(0).getItem().getId());
             List<ItemsColorsDto> itemsColorsDtoList = itemsColorMapper.toDtoList(itemsColorsList);
             if (itemsColorsDtoList != null) {
                 itemDto.setItem_color(itemsColorsDtoList);

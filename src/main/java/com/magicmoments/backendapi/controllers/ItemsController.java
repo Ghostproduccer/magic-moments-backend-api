@@ -10,10 +10,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,7 +29,12 @@ public class ItemsController {
         return itemsService.getAllItemsWithColor();
     }
 
-    @GetMapping("/prueba")
+    @Operation(summary = "Get an item by id")
+    @GetMapping("/itemsColors/{id}")
+    public ItemsDto getById(@PathVariable("id") int id) {
+        return itemsService.getItemsWithColorById(id);
+    }
+
     @SecurityRequirement(name = "Bearer Authentication")
     @PreAuthorize("hasRole('MODERATOR')")
     public Items prueba() { return null; }
