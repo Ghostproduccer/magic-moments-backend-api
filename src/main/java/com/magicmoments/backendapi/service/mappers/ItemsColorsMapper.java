@@ -11,11 +11,11 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ItemsColorsMapper {
     @Mapping(source = "id.itemId", target = "itemId")
-    @Mapping(source = "id.colorName", target = "colorName")
+    @Mapping(source = "color", target = "colorName")
     ItemsColorsDto toDto(ItemsColors itemsColors);
 
     @Mapping(source = "itemId", target = "id.itemId")
-    @Mapping(source = "colorName", target = "id.colorName")
+    @Mapping(source = "colorName", target = "color")
     ItemsColors fromDto(ItemsColorsDto itemsColorsDto);
 
     List<ItemsColorsDto> toDtoList(List<ItemsColors> itemsColorsList);

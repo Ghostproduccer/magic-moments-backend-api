@@ -30,7 +30,6 @@ public class UploadController {
                                            @RequestParam("base64Image") String base64Image) {
 
         if (uploadedFile.isEmpty()) {
-
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("File not found");
         }
 
