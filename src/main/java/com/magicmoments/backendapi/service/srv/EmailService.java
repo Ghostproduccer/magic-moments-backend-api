@@ -18,8 +18,8 @@ public class EmailService {
 
         String htmlContent = "<html>" +
                 "<body style='font-family: Arial, sans-serif;'>" +
-                "<h2 style='text-align: center;'>¡Hola, " + name + "!</h2>" +
-                "<p>" + body.replace("\n", "<br>") + "</p>" +
+                "<h2 style='text-align: center;'>¡Welcome, " + name + " to magic moments!</h2>" +
+                "<p style='text-align: center;>" + body.replace("\n", "<br>") + "</p>" +
                 "<p style='text-align: center; font-size: small;'>" + footer + "</p>" +
                 "</body>" +
                 "</html>";
