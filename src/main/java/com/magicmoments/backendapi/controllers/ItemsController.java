@@ -1,15 +1,12 @@
 package com.magicmoments.backendapi.controllers;
 
-import com.magicmoments.backendapi.model.Colors;
 import com.magicmoments.backendapi.model.Items;
 import com.magicmoments.backendapi.service.dto.ItemsDto;
 import com.magicmoments.backendapi.service.srv.ItemsService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,7 +32,5 @@ public class ItemsController {
         return itemsService.getItemsWithColorById(id);
     }
 
-    @SecurityRequirement(name = "Bearer Authentication")
-    @PreAuthorize("hasRole('MODERATOR')")
     public Items prueba() { return null; }
 }

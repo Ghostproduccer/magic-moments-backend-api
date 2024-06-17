@@ -18,7 +18,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Base64;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/upload")
 public class UploadController {
@@ -27,25 +27,29 @@ public class UploadController {
 
     @PostMapping("/overlayImage")
     public ResponseEntity<?> overlayImages(@RequestParam("file") MultipartFile uploadedFile,
-                                           @RequestParam("base64Image") String base64Image) {
+                                           @RequestParam("file2") MultipartFile uploadedFile2) {
 
         if (uploadedFile.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("File not found");
         }
 
         try {
-            // Uploaded file
-            File fileImageFG = File.createTempFile("upload-", uploadedFile.getOriginalFilename());
-            uploadedFile.transferTo(fileImageFG);
-            Image fgImage = ImageIO.read(fileImageFG);
+            // Define the path where the files will be saved
+            String tempDir = System.getProperty("java.io.tmpdir");
 
-            // Base64 image (The item image)
-            byte[] base64ImageBytes = Base64.getDecoder().decode(base64Image);
-            File base64ImageFile = new File("uploads/base64_image.png");
-            try (FileOutputStream fos = new FileOutputStream(base64ImageFile)) {
-                fos.write(base64ImageBytes);
-            }
-            Image bgImage = ImageIO.read(base64ImageFile);
+            // Save image1
+            File file1 = new File(tempDir, uploadedFile.getOriginalFilename());
+            uploadedFile.transferTo(file1);
+
+            // Save image2
+            File file2 = new File(tempDir, uploadedFile2.getOriginalFilename());
+            uploadedFile2.transferTo(file2);
+
+            // Uploaded file
+            Image fgImage = ImageIO.read(file1);
+
+            // The item image
+            Image bgImage = ImageIO.read(file2);
 
             BufferedImage finalImage = uploadService.overlayImages(fgImage, bgImage);
 
