@@ -9,8 +9,6 @@ import java.util.Set;
 public class ColorsDto {
     private String name;
 
-    private Set<ItemsColors> item_color;
-
     private String hex_code;
 
 }
