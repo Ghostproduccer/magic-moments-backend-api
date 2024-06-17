@@ -17,7 +17,5 @@ public class UsersDto {
 
     private Set<Roles> roles = new HashSet<>();
 
-    // form inputs
     private String confirmPassword;
-    private String tokenJWT;
 }
